@@ -1,4 +1,5 @@
-import { useEffect, useState, useCallback } from "react";
+﻿import { useEffect, useState, useCallback } from "react";
+import imagesMap from "./images_map";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer, ReferenceLine
 } from "recharts";
@@ -224,11 +225,7 @@ function fmt(n) {
 }
 
 function getItemImage(name) {
-  const map = {
-    "Britský Dimenzionit": "/images/britsky_dimenzionit.png",
-    "Jednoduchý Raid Box Zenas": "/images/jednoduchy_raid_box_zenas.png",
-  };
-  return map[name] || null;
+  return imagesMap[name] || null;
 }
 
 function TrendBadge({ median, history }) {

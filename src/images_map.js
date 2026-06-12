@@ -5602,3 +5602,4 @@ const images = {
   "Žlutě Tečkovaný Říční Rejnok": "/images/zlute_teckovany_ricni_rejnok.png",
   "Žvýkačka": "/images/zvykacka.png",
 };
+export default images;

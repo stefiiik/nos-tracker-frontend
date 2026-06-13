@@ -349,15 +349,19 @@ function ItemsPage({ items }) {
   };
 
   const handlePaste = async (e) => {
-    for (let ci of e.clipboardData.items) {
-      if (ci.type.includes("image")) {
-        const fd = new FormData();
-        fd.append("file", ci.getAsFile());
-        const res = await fetch(`${API}/analyze`, { method: "POST", body: fd });
-        setOcrResult(await res.json());
+  for (let ci of e.clipboardData.items) {
+    if (ci.type.includes("image")) {
+      const fd = new FormData();
+      fd.append("file", ci.getAsFile());
+      const res = await fetch(`${API}/analyze`, { method: "POST", body: fd });
+      const result = await res.json();
+      setOcrResult(result);
+      if (result.item_name) {
+        pickItem(result.item_name);
       }
     }
-  };
+  }
+};
 
   const handleSave = async () => {
     let name = (selectedItem && selectedItem !== "__new__") ? selectedItem : itemSearch.trim();
